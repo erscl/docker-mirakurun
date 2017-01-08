@@ -14,7 +14,7 @@ cat xenial-server-cloudimg-amd64-root.tar.gz | docker import - ubuntu-xenial
 cd ../
 rm -r baseimage
 
-docker build -t erscl/mirakurun mirakurun
+docker build -t erscl/mirakurun docker-mirakurun
 ```
 ## start-up script
 ```
@@ -28,8 +28,8 @@ docker run --restart=always --name mirakurun \
 --device=/dev/pt3video2:/dev/pt3video2 \
 --device=/dev/pt3video3:/dev/pt3video3 \
 --volume /etc/localtime:/etc/localtime:ro \
---volume /zfsdata/docker/mirakurun/conf:/usr/local/etc/mirakurun \
---volume /zfsdata/docker/mirakurun/db:/usr/local/var/db/mirakurun \
+--volume /path/to/this/directory/conf:/usr/local/etc/mirakurun \
+--volume /path/to/this/directory/db:/usr/local/var/db/mirakurun \
 --volume /var/run/pcscd/pcscd.comm:/var/run/pcscd/pcscd.comm \
 --detach \
 erscl/mirakurun
